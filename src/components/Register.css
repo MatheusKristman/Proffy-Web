@@ -1,0 +1,468 @@
+.register-container {
+    position: relative;
+    background-color: #f0f0f7;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 80px;
+}
+
+.register-background {
+    position: absolute;
+    background-color: #8257e5;
+    width: 100%;
+    height: 22%;
+}
+
+.register-wrapper {
+    width: 100%;
+    position: relative;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-header {
+    padding-top: 25px;
+    margin-bottom: 40px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.register-header-logo {
+    width: 50px;
+}
+
+.register-info-wrapper {
+    width: 50%;
+}
+
+.register-info {
+    width: 50%;
+    margin-bottom: 65px;
+}
+
+.register-info-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 25px;
+}
+
+.register-info-desc {
+    width: 90%;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.register-box {
+    background-color: #fff;
+    padding-top: 65px;
+    border-radius: 10px;
+}
+
+.register-box-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-box-title {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #32264D;
+    margin-bottom: 15px;
+    width: 85%;
+}
+
+.register-box-line {
+    width: 85%;
+    height: 1px;
+    background-color: #e6e6f0;
+    margin-bottom: 25px;
+}
+
+.register-box-form-div-name,
+.register-box-form-div-photo,
+.register-box-form-div-tel,
+.register-box-form-div-bio,
+.register-box-form-div-school-subject,
+.register-box-form-div-cost {
+    width: 85%;
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.register-box-form-div-bio {
+    margin-bottom: 65px;
+}
+
+.register-box-form-placeholder {
+    display: block;
+    color: #9c98a6;
+}
+
+.register-box-form-placeholder-with-tip {
+    color: #9c98a6;
+    margin-right: 12px;
+}
+
+.register-box-form-tip {
+    font-size: 0.75rem;
+    color: #c1bccc;
+}
+
+.register-box-form-input-name,
+.register-box-form-input-photo,
+.register-box-form-input-tel,
+.register-box-form-input-cost,
+.register-box-form-input-H-initial,
+.register-box-form-input-H-final {
+    width: 100%;
+    border-radius: 8px;
+    background-color: #f8f8fc;
+    border: 1.5px solid #e6e6f0;
+    padding: 15px 20px;
+    margin-top: 8px;
+    font-size: 1rem;
+    color: #6a6180;
+    font-family: 'Archivo', sans-serif;
+    outline: none;
+}
+
+.register-box-form-input-name:focus,
+.register-box-form-input-photo:focus,
+.register-box-form-input-tel:focus,
+.register-box-textarea-bio:focus,
+.register-box-form-input-cost:focus,
+.register-box-form-input-H-initial:focus,
+.register-box-form-input-H-final:focus {
+    border: 1.5px solid #f8f8fc;
+}
+
+input:focus+.register-box-input-focus-line {
+    width: 96%;
+    margin-left: 2%;
+    height: 2px;
+    background-color: #8257e5;
+    position: absolute;
+    bottom: 0;
+    transition: all 0.2s ease;
+}
+
+textarea:focus+.register-box-input-focus-line {
+    width: 96%;
+    margin-left: 2%;
+    height: 2px;
+    background-color: #8257e5;
+    position: absolute;
+    bottom: 0;
+    transition: all 0.2s ease;
+}
+
+.register-box-textarea-bio {
+    width: 100%;
+    height: 170px;
+    background-color: #f8f8fc;
+    border: 1.5px solid #e6e6f0;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-top: 8px;
+    font-size: 1rem;
+    color: #6a6180;
+    font-family: 'Archivo', sans-serif;
+    outline: none;
+    resize: none;
+    line-height: 26px;
+}
+
+.register-box-textarea-bio::-webkit-scrollbar {
+    display: none;
+}
+
+.register-box-title2 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #32264D;
+    margin-bottom: 15px;
+    width: 85%;
+}
+
+.register-box-form-select-placeholder {
+    font-size: 1rem;
+    color: #c1bccc;
+    pointer-events: none;
+}
+
+.register-box-form-select-school-subject-text,
+.register-box-form-select-week-text {
+    font-size: 1rem;
+    color: #6a6180;
+    font-family: 'Archivo', sans-serif;
+    margin-top: 4px;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+}
+
+.register-box-form-select-school-subject,
+.register-box-form-select-week {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background-color: #f8f8fc;
+    border: 1.5px solid #e6e6f0;
+    border-radius: 8px;
+    padding: 11px 20px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.register-box-form-select-school-subject-button,
+.register-box-form-select-week-button {
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    background-image: url('../images/arrow-button.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 100%;
+    right: 0px;
+    top: 0;
+    cursor: pointer;
+}
+
+.register-error {
+    border: 1.5px solid #F33B3B;
+}
+
+.register-error::placeholder, .register-error-select-placeholder {
+    color: #F33B3B !important;
+}
+
+.register-error-schedule {
+    font-size: 1rem;
+    color: #F33B3B;
+    width: 85%;
+    margin-bottom: 10px;
+}
+
+.select-desactive {
+    display: none;
+}
+
+.register-box-form-select-school-subject-options,
+.register-box-form-select-week-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f8f8fc;
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    z-index: 9;
+}
+
+.register-box-form-select-school-subject-option,
+.register-box-form-select-week-option {
+    padding: 15px 20px;
+    border-top: 1.5px solid #e6e6f0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #6a6180;
+}
+
+.register-box-form-select-school-subject-option:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.register-box-form-select-school-subject-option:hover,
+.register-box-form-select-week-option:hover {
+    background-color: #dddde7;
+}
+
+.option-selected {
+    font-weight: 600;
+    background-color: #ebebf5;
+    border-left: 1.5px solid #8257e5;
+}
+
+.register-box-title3-wrapper {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.register-box-title3 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #32264d;
+}
+
+.register-box-add-schedule {
+    height: 26px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #8257e5;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.register-box-add-schedule::before {
+    content: '+';
+    font-size: 1.3rem;
+    margin-right: 10px;
+}
+
+.register-box-form-schedule-wrapper {
+    width: 85%;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 65px;
+}
+
+.register-box-form-div-week {
+    flex-grow: 1;
+}
+
+.register-box-form-div-H-initial,
+.register-box-form-div-H-final {
+    position: relative;
+}
+
+.register-box-form-footer {
+    width: 100%;
+    height: 135px;
+    background-color: #fafafc;
+    display: flex;
+    justify-content: center;
+    border-top: 1.5px solid #e6e6f0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.register-box-form-footer-wrapper {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.register-box-form-footer-infos {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.register-box-form-footer-infos p {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #a0a0b3;
+}
+
+.register-box-form-footer-button {
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Archivo', sans-serif;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    background-color: #04d361;
+    padding: 15px 40px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 920px) {
+    .register-info-wrapper {
+        width: 80%;
+    }
+
+    .register-box-form-schedule-wrapper {
+        flex-direction: column;
+    }
+
+}   
+
+@media screen and (max-width: 414px) {
+    .register-box-form-input-name,
+    .register-box-form-input-photo,
+    .register-box-form-input-tel,
+    .register-box-form-input-cost,
+    .register-box-form-input-H-initial,
+    .register-box-form-input-H-final,
+    .register-box-textarea-bio {
+        font-size: 0.8rem;
+        padding: 15px;
+    }
+
+    .register-box-form-select-placeholder {
+        font-size: 0.8rem;
+    }
+
+    .register-box-form-select-school-subject,
+    .register-box-form-select-week {
+        padding: 13px 20px;
+    }
+
+    .register-info {
+        width: 100%;
+    }
+
+    .register-box-form-footer-infos p {
+        font-size: 0.65rem;
+    }
+
+    .register-box-form-footer-button {
+        font-size: 0.7rem;
+    }
+
+    .register-box-form-select-school-subject-text,
+    .register-box-form-select-week-text {
+        margin-top: 1px;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .register-info-wrapper {
+        width: 100%;
+    }
+
+    .register-info {
+        width: 80%;
+        margin-left: 20px;
+    }
+
+    .register-box {
+        width: 100%;
+        border-radius: 0;
+        padding-top: 30px;
+    }
+
+    .register-box-form-placeholder,
+    .register-box-form-placeholder-with-tip {
+        font-size: 0.8rem;
+    }
+
+    .register-box-form-select-placeholder {
+        font-size: 0.6rem;
+    }
+
+    .register-box-add-schedule {
+        font-size: 0.8rem;
+    }
+
+    .register-box-add-schedule::before {
+        font-size: 1rem;
+        margin-right: 5px;
+    }
+}

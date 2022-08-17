@@ -1,0 +1,430 @@
+.list-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #F0F0F7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 80px;
+}
+
+.list-background {
+    background-color: #8257e5;
+    width: 100%;
+    height: 295px;
+    position: absolute;
+}
+
+.list-wrapper {
+    position: relative;
+    z-index: 9;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.list-header {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.list-infos {
+    width: 50%;
+    margin-top: 45px;
+}
+
+.list-infos-title {
+    font-size: 2.25rem;
+    color: #fff;
+    width: 35%;
+    margin-bottom: 50px;
+}
+
+.list-infos-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+}
+
+.list-infos-school-subject {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.list-infos-placeholder {
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: #d4c2ff;
+    margin-bottom: 8px;
+}
+
+.list-infos-input-school-subject {
+    height: 56px;
+    padding: 15px 20px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #6a6180;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: #fafafc;
+    border: 1.5px solid #e6e6f0;
+}
+
+.list-infos-week {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.list-infos-select-week {
+    position: relative;
+    background-color: #fafafc;
+    border: 1.5px solid #e6e6f0;
+    height: 56px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.list-infos-select-week-button {
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    background-image: url('../images/arrow-button.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 100%;
+    right: 0px;
+    top: 0;
+    cursor: pointer;
+}
+
+.list-infos-select-week-options {
+    position: absolute;
+    top: 90%;
+    width: 100%;
+    background-color: #fafafc;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.list-infos-select-week-option {
+    padding: 15px 20px;
+    border-top: 1.5px solid #e6e6f0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #6a6180;
+}
+
+.list-infos-select-week-option:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.list-infos-select-week-option:hover {
+    background-color: #dddde7;
+}
+
+.list-option-selected {
+    font-weight: 600;
+    background-color: #ebebf5;
+    border-left: 1.5px solid #8257e5;
+}
+
+.list-select-desactive {
+    display: none;
+}
+
+.list-infos-schedule {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.list-infos-input-schedule {
+    height: 56px;
+    padding: 15px 20px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #6a6180;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: #fafafc;
+    border: 1.5px solid #e6e6f0;
+}
+
+.list-result {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    gap: 24px;
+}
+
+.list-result-card {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1.5px solid #E6E6F0;
+}
+
+.list-result-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-result-titles {
+    display: flex;
+    padding: 32px;
+    gap: 25px;
+}
+
+.list-result-profile-image {
+    width: 129px;
+    height: 129px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.list-result-titles-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.list-result-name {
+    font-size: 1.5rem;
+    color: #32264d;
+    margin-bottom: 4px;
+}
+
+.list-result-school-subject {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #6a6180;
+}
+
+.list-result-descs {
+    padding: 0 32px 0 32px;
+}
+
+.list-result-desc span {
+    line-height: 26px;
+    color: #6a6180;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.list-result-infos {
+    background-color: #fafafc;
+    padding: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top: 1.5px solid #E6E6F0;
+}
+
+.list-result-infos-values {
+    display: flex;
+    gap: 16px;
+}
+
+.list-result-value-desc {
+    font-size: 0.875rem;
+    color: #9c98a6;
+}
+
+.list-result-value {
+    font-size: 1.25rem;
+    color: #8257e5;
+}
+
+.list-result-button {
+    display: flex;
+    align-items: center;
+    background-color: #04d361;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 40px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 26px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.list-result-button::before {
+    content: url('../images/whatsapp.png');
+    width: 20px;
+    height: 20px;
+    margin-right: 16px;
+}
+
+.list-result-button:hover {
+    background-color: #0dc45f;
+}
+
+.list-result-not-found {
+    margin-top: 110px;
+    width: 250px;
+}
+
+.list-result-not-found-text {
+    text-align: center;
+    font-size: 1rem;
+    color: #9c98a6;
+}
+
+@media screen and (max-width: 1280px) {
+    .list-background {
+        height: 335px;
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .list-background {
+        height: 335px;
+    }
+
+    .list-infos {
+        width: 80%;
+    }
+
+    .list-result {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .list-infos-wrapper {
+        flex-direction: column;
+    }
+
+    .list-infos-placeholder {
+        color: #b5a4dd;
+    }
+
+    .list-background {
+        height: 540px;
+    }
+
+    .list-infos-title {
+        width: 79%;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .list-background {
+        height: 580px;
+    }
+
+    .list-result-infos {
+        flex-direction: column;
+        gap: 50px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .list-background {
+        height: 540px;
+    }
+
+    .list-result-titles {
+        padding: 22px;        
+    }
+
+    .list-result-profile-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .list-result-titles-text {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .list-result-button {
+        line-height: 20px;
+    }
+    
+    .list-result-button::before {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .list-background {
+        height: 520px;
+    }
+    
+    .list-infos-title {
+        font-size: 2rem;
+    }
+
+    .list-header {
+        width: 90%;
+    }
+
+    .list-infos {
+        width: 90%;
+    }
+
+    .list-result {
+        width: 90%;
+    }
+
+    .list-result-profile-image {
+        width: 70px;
+        height: 70px;
+    }
+
+    .list-result-name {
+        font-size: 1rem;
+    }
+
+    .list-result-school-subject {
+        font-size: 0.8rem;
+    }
+
+    .list-result-desc span {
+        font-size: 0.8rem;
+    }
+
+    .list-result-infos-values {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .list-result-button {
+        font-size: 0.8rem;
+        padding: 15px 30px;
+    }
+
+    .list-result-button::before {
+        margin-right: 16px;
+    }
+
+    .list-result-not-found {
+        width: 230px;
+    }
+}

@@ -1,0 +1,93 @@
+.not-found-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #8257e5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+.not-found-logo {
+    margin-top: 50px;
+}
+
+.not-found-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    gap: 20px;
+}
+
+.not-found-error {
+    font-size: 4rem;
+    color: #5c3ea1;
+}
+
+.not-found-title {
+    font-weight: 500;
+    font-size: 3rem;
+    color: #fff;
+    margin-top: -65px;
+}
+
+.not-found-image {
+    width: 400px;
+}
+
+.not-found-btn {
+    border: none;
+    border-radius: 8px;
+    background-color: #04d361;
+    color: #fff;
+    font-family: 'Archivo', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 20px 40px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+@media screen and (max-width: 540px) {
+    .not-found-logo {
+        width: 225px;
+    }
+
+    .not-found-error {
+        font-size: 2.5rem;
+    }
+
+    .not-found-image {
+        width: 200px;
+    }
+
+    .not-found-title {
+        font-size: 1.5rem;
+        margin-top: -35px;
+    }
+
+    .not-found-btn {
+        font-size: 1rem;
+        padding: 15px 30px;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .not-found-logo {
+        width: 170px;
+    }
+
+    .not-found-error {
+        font-size: 2rem;
+    }
+
+    .not-found-image {
+        width: 130px;
+    }
+
+    .not-found-title {
+        font-size: 1rem;
+        margin-top: -30px;
+    }
+}
