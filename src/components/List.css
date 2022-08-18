@@ -92,6 +92,12 @@
     height: 56px;
     border-radius: 8px;
     cursor: pointer;
+    padding: 15px 20px;
+}
+
+.list-infos-select-placeholder {
+    font-size: 1rem;
+    color: #6a6180;
 }
 
 .list-infos-select-week-button {
@@ -110,7 +116,8 @@
 
 .list-infos-select-week-options {
     position: absolute;
-    top: 90%;
+    top: 95%;
+    left: 0;
     width: 100%;
     background-color: #fafafc;
     border-bottom-left-radius: 8px;
@@ -134,6 +141,10 @@
 .list-infos-select-week-option:hover {
     background-color: #dddde7;
 }
+
+/* .list-infos-select-week-option-text {
+    pointer-events: none;
+} */
 
 .list-option-selected {
     font-weight: 600;

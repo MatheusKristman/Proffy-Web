@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import arrowBack from '../images/arrow-back.svg';
 import logo from '../images/logo-register.png';
@@ -10,6 +10,51 @@ import './List.css';
 function List() {
     const [hasResult, setHasResult] = useState(false);
     const [searchActive, setSearchActive] = useState(false);
+    const [isDaySelectOpen, setIsDaySelectOpen] = useState(false);
+    const [weekText, setWeekText] = useState('');
+    const [weekOptions, setWeekOptions] = useState({
+        segunda: false,
+        terca: false,
+        quarta: false,
+        quinta: false,
+        sexta: false
+    });
+    const [searchData, setSearchData] = useState({
+        subject: '',
+        day: '',
+        schedule: ''
+    });
+
+    useEffect(() => {
+        setSearchData({ ...searchData, day: weekText })
+    }, [weekText]);
+
+    useEffect(() => {
+        if (searchData.subject !== '' && searchData.day !== '' && searchData.schedule !== '') {
+            setSearchActive(true);
+        }
+    }, [searchData]);
+
+    function addInputData(e) {
+        const { name, value } = e.target;
+        setSearchData({ ...searchData, [name]: value });
+    }
+
+    function handleSelect(e) {
+        if (!e.target.classList.contains('list-infos-select-week-option') && !e.target.classList.contains('list-infos-select-week-option-text')) {
+            setIsDaySelectOpen(!isDaySelectOpen);
+        }
+    }
+
+    function changeWeekOption(option) {
+        const newObj = { ...weekOptions };
+        Object.keys(newObj).forEach(key => {
+            newObj[key] = false;
+        });
+        newObj[option] = true;
+        setWeekOptions(newObj);
+        setIsDaySelectOpen(false);
+    }
 
     return (
         <div className='list-container'>
@@ -29,31 +74,64 @@ function List() {
                     <div className='list-infos-wrapper'>
                         <div className='list-infos-school-subject'>
                             <span className='list-infos-placeholder'>Matéria</span>
-                            <input type='text' className='list-infos-input-school-subject' />
+                            <input type='text' name='subject' value={searchData.subject} onChange={addInputData} className='list-infos-input-school-subject' />
                         </div>
 
                         <div className='list-infos-week'>
                             <span className='list-infos-placeholder'>Dia da semana</span>
-                            <div className='list-infos-select-week'>
+                            <div onClick={handleSelect} className='list-infos-select-week'>
+                                <span>
+                                    {weekText}
+                                </span>
                                 <button className='list-infos-select-week-button' />
-                                <div className='list-infos-select-week-options list-select-desactive'>
-                                    <div className='list-infos-select-week-option list-option-selected'>
+                                <div className={isDaySelectOpen ? 'list-infos-select-week-options' : 'list-infos-select-week-options list-select-desactive'}>
+                                    <div 
+                                        className={weekOptions.segunda ? 'list-infos-select-week-option list-option-selected' : 'list-infos-select-week-option'}
+                                        onClick={(e) => {
+                                            changeWeekOption('segunda');
+                                            setWeekText(e.target.textContent);
+                                        }}
+                                    >
                                         <span className='list-infos-select-week-option-text'>Segunda</span>
                                     </div>
 
-                                    <div className='list-infos-select-week-option'>
+                                    <div 
+                                        className={weekOptions.terca ? 'list-infos-select-week-option list-option-selected': 'list-infos-select-week-option'}
+                                        onClick={(e) => {
+                                            changeWeekOption('terca');
+                                            setWeekText(e.target.textContent);
+                                        }}
+                                    >
                                         <span className='list-infos-select-week-option-text'>Terça</span>
                                     </div>
 
-                                    <div className='list-infos-select-week-option'>
+                                    <div 
+                                        className={weekOptions.quarta ? 'list-infos-select-week-option list-option-selected': 'list-infos-select-week-option'}
+                                        onClick={(e) => {
+                                            changeWeekOption('quarta');
+                                            setWeekText(e.target.textContent);
+                                        }}                                        
+                                    >
                                         <span className='list-infos-select-week-option-text'>Quarta</span>
                                     </div>
 
-                                    <div className='list-infos-select-week-option'>
+                                    <div 
+                                        className={weekOptions.quinta ? 'list-infos-select-week-option list-option-selected': 'list-infos-select-week-option'}
+                                        onClick={(e) => {
+                                            changeWeekOption('quinta');
+                                            setWeekText(e.target.textContent);
+                                        }}
+                                    >
                                         <span className='list-infos-select-week-option-text'>Quinta</span>
                                     </div>
 
-                                    <div className='list-infos-select-week-option'>
+                                    <div 
+                                        className={weekOptions.sexta ? 'list-infos-select-week-option list-option-selected': 'list-infos-select-week-option'}
+                                        onClick={(e) => {
+                                            changeWeekOption('sexta');
+                                            setWeekText(e.target.textContent);
+                                        }}
+                                    >
                                         <span className='list-infos-select-week-option-text'>Sexta</span>
                                     </div>
                                 </div>
@@ -62,7 +140,7 @@ function List() {
 
                         <div className='list-infos-schedule'>
                             <span className='list-infos-placeholder'>Horário</span>
-                            <input type='text' className='list-infos-input-schedule' />
+                            <input type='text' name='schedule' value={searchData.schedule} onChange={addInputData} className='list-infos-input-schedule' />
                         </div>
                     </div>
                 </div>
