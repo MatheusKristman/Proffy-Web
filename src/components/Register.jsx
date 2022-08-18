@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Schedule from './Schedule';
+import Success from './Success';
 import backArrow from '../images/arrow-back.svg';
 import logo from '../images/logo-register.svg';
 import warning from '../images/alert.png';
@@ -8,7 +9,7 @@ import Validation from '../Validation';
 import './Register.css';
 
 function Register() {
-    const [counter, setCounter] = useState(0);
+    const [successful, setSuccessful] = useState(false);
     const [isSchoolSubjectClicked, setIsSchoolSubjectClicked] = useState(false);    
     const [schoolSubjectOptions, setSchoolSubjectOptions] = useState({
         artes: false,
@@ -86,13 +87,11 @@ function Register() {
         e.preventDefault();
         setScheduleComponent(scheduleComponent.concat(
             <Schedule
-                counter={counter}
                 update={update}
                 scheduleError={errors}
                 key={scheduleComponent.length}
             />
         ));
-        setCounter(counter + 1);
     }
 
     function checkData(e) {
@@ -114,10 +113,16 @@ function Register() {
             console.log(localStorageTeacherData);
 
             localStorage.setItem('teacher-data', JSON.stringify(localStorageTeacherData));
+
+            setSuccessful(true);
+            
+            window.scrollTo(0, 0);
             
             setIsSubmitting(false);
 
-            navigate('/');
+            setTimeout(() => {
+                navigate('/');
+            }, 3000);
 
             return;
         }
@@ -129,6 +134,7 @@ function Register() {
 
     return (
         <div className='register-container'>
+            <Success style={successful ? {top: '30px'} : {top: '-120px'}} />
             <div className='register-background' />
             <div className='register-wrapper'>
                 <header className='register-header'>
@@ -368,7 +374,6 @@ function Register() {
                             <span className='register-error-schedule' style={errors.schedule ? {display: 'block'} : {display: 'none'}}>{errors.schedule}</span>
 
                             <Schedule 
-                                counter={counter}
                                 update={update}
                                 scheduleError={errors}
                                 key={scheduleComponent.length}
