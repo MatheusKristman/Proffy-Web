@@ -7,6 +7,7 @@ import logo from '../images/logo-register.svg';
 import warning from '../images/alert.png';
 import Validation from '../Validation';
 import './Register.css';
+import { useCallback } from 'react';
 
 function Register() {
     const [successful, setSuccessful] = useState(false);
@@ -38,12 +39,6 @@ function Register() {
     const [errors, setErrors] = useState({});
     
     const navigate = useNavigate();    
-    
-    useEffect(() => {
-        if (isSubmitting) {
-            handleSubmit();
-        }
-    }, [isSubmitting]);
 
     function update(values) {
         var result = data.horario.find(value => value.dia === values.dia);
@@ -101,7 +96,7 @@ function Register() {
         console.log('mudou para true')
     }
 
-    function handleSubmit() {
+    const handleSubmit = useCallback(() => {
         if (Object.keys(errors).length === 0 && isSubmitting) {
 
             console.log(errors);
@@ -129,8 +124,14 @@ function Register() {
 
         console.log('não envia')
         
-        return setIsSubmitting(false);                
-    }
+        return setIsSubmitting(false);
+    }, [data, errors, isSubmitting, navigate]);
+
+    useEffect(() => {
+        if (isSubmitting) {
+            handleSubmit();
+        }
+    }, [isSubmitting, handleSubmit]);
 
     return (
         <div className='register-container'>

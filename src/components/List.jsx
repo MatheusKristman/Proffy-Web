@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {Link} from 'react-router-dom';
 import arrowBack from '../images/arrow-back.svg';
 import logo from '../images/logo-register.png';
-import people1 from '../images/people1.jpg';
-import people2 from '../images/people2.jpg';
 import './List.css';
-
 
 function List() {
     const [hasResult, setHasResult] = useState(false);
@@ -18,27 +15,55 @@ function List() {
         quarta: false,
         quinta: false,
         sexta: false
-    });
+    }); 
     const [searchData, setSearchData] = useState({
         subject: '',
         day: '',
         schedule: ''
     });
+    const [savedData, setSavedData] = useState([]);
 
     useEffect(() => {
-        setSearchData({ ...searchData, day: weekText })
-    }, [weekText]);
+        const savedResult = JSON.parse(localStorage.getItem("teacher-data")) || [];
+        setSavedData(savedResult);
+    }, []);    
 
     useEffect(() => {
-        if (searchData.subject !== '' && searchData.day !== '' && searchData.schedule !== '') {
-            setSearchActive(true);
+
+        if (savedData.length === 0) {
+            setHasResult(false);
+        } else {
+            setHasResult(true);
         }
-    }, [searchData]);
+
+    }, [savedData]);
 
     function addInputData(e) {
         const { name, value } = e.target;
         setSearchData({ ...searchData, [name]: value });
     }
+
+    const handleSearch = useCallback(async () => {
+        if (searchData.subject !== '' && searchData.day !== '' && searchData.schedule !== '') {
+            setSearchActive(true);
+            
+            const reset = await JSON.parse(localStorage.getItem("teacher-data")) || [];
+            
+            const filteredResultSubject = await reset.filter((subject) => subject.materia.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(searchData.subject.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")));            
+
+            const filteredResultDay = await filteredResultSubject.filter((data) => data.horario.find((horario) => horario.dia === searchData.day));
+
+            const filteredResultSchedule = await filteredResultDay.filter((data) => data.horario.find((horario) => Number(horario.inicio) <= Number(searchData.schedule) && Number(horario.fim) >= Number(searchData.schedule)));
+            
+            setSavedData(await filteredResultSchedule);
+        }
+    }, [searchData]);
+
+    useEffect(() => {
+        
+        handleSearch();
+
+    }, [searchData, handleSearch]);
 
     function handleSelect(e) {
         if (!e.target.classList.contains('list-infos-select-week-option') && !e.target.classList.contains('list-infos-select-week-option-text')) {
@@ -74,7 +99,7 @@ function List() {
                     <div className='list-infos-wrapper'>
                         <div className='list-infos-school-subject'>
                             <span className='list-infos-placeholder'>Matéria</span>
-                            <input type='text' name='subject' value={searchData.subject} onChange={addInputData} className='list-infos-input-school-subject' />
+                            <input type='text' name='subject' value={searchData.subject} onBlur={handleSearch} onChange={addInputData} className='list-infos-input-school-subject' />
                         </div>
 
                         <div className='list-infos-week'>
@@ -90,6 +115,7 @@ function List() {
                                         onClick={(e) => {
                                             changeWeekOption('segunda');
                                             setWeekText(e.target.textContent);
+                                            setSearchData({ ...searchData, day: e.target.textContent });
                                         }}
                                     >
                                         <span className='list-infos-select-week-option-text'>Segunda</span>
@@ -100,6 +126,7 @@ function List() {
                                         onClick={(e) => {
                                             changeWeekOption('terca');
                                             setWeekText(e.target.textContent);
+                                            setSearchData({ ...searchData, day: e.target.textContent });
                                         }}
                                     >
                                         <span className='list-infos-select-week-option-text'>Terça</span>
@@ -110,6 +137,7 @@ function List() {
                                         onClick={(e) => {
                                             changeWeekOption('quarta');
                                             setWeekText(e.target.textContent);
+                                            setSearchData({ ...searchData, day: e.target.textContent });
                                         }}                                        
                                     >
                                         <span className='list-infos-select-week-option-text'>Quarta</span>
@@ -120,6 +148,7 @@ function List() {
                                         onClick={(e) => {
                                             changeWeekOption('quinta');
                                             setWeekText(e.target.textContent);
+                                            setSearchData({ ...searchData, day: e.target.textContent });
                                         }}
                                     >
                                         <span className='list-infos-select-week-option-text'>Quinta</span>
@@ -130,6 +159,7 @@ function List() {
                                         onClick={(e) => {
                                             changeWeekOption('sexta');
                                             setWeekText(e.target.textContent);
+                                            setSearchData({ ...searchData, day: e.target.textContent });
                                         }}
                                     >
                                         <span className='list-infos-select-week-option-text'>Sexta</span>
@@ -140,83 +170,44 @@ function List() {
 
                         <div className='list-infos-schedule'>
                             <span className='list-infos-placeholder'>Horário</span>
-                            <input type='text' name='schedule' value={searchData.schedule} onChange={addInputData} className='list-infos-input-schedule' />
+                            <input type='text' name='schedule' value={searchData.schedule} onBlur={handleSearch} onChange={addInputData} className='list-infos-input-schedule' />
                         </div>
                     </div>
                 </div>
                 {searchActive ? ( 
                     hasResult ? (
                         <div className='list-result'>
-                            <div className='list-result-card'>
-                                <div className='list-result-wrapper'>
-                                    <div className='list-result-titles'>
-                                        <img src={people1} alt='profile' className='list-result-profile-image' />
-                                        <div className='list-result-titles-text'>
-                                            <h1 className='list-result-name'>Bruna Fernandes</h1>
-                                            <h2 className='list-result-school-subject'>Química</h2>
-                                        </div>                                
-                                    </div>
-    
-                                    <div className='list-result-descs'>
-                                        <div className='list-result-desc'>
-                                            <span>Entusiasta das melhores tecnologias de química avançada.</span>
-    
-                                            <span>
-                                                Apaixonada por explodir coisas em laboratório e por mudar a vida das
-                                                pessoas através de experiências. Mais de 200.000 pessoas já passaram por 
-                                                uma das minhas explosões.
-                                            </span>
+                            {savedData.map((data, index) => (
+                                <div key={index} className="list-result-card">
+                                    <div className="list-result-wrapper">
+                                        <div className="list-result-titles">
+                                            <img src={data.foto.slice(2)} alt="profile" className="list-result-profile-image" />
+                                            <div className="list-result-titles-text">
+                                                <h1 className="list-result-name">{data.nome}</h1>
+                                                <h2 className="list-result-school-subject">{data.materia}</h2>
+                                            </div>
                                         </div>
-                                    </div>
-    
-                                    <div className='list-result-infos'>
-                                        <div className='list-result-infos-values'>
-                                            <span className='list-result-value-desc'>Preço/hora</span>
-                                            <h2 className='list-result-value'>R$ 20,00</h2>                                    
+
+                                        <div className="list-result-descs">
+                                            <div className="list-result-desc">
+                                                {data.bio.split(/\r?\n/).map((str, index) => (
+                                                    <span key={index}>{str}</span>
+                                                ))}
+                                            </div>
                                         </div>
-                                        <div className='list-result-buttons'>
-                                            <button className='list-result-button'>Entrar em contato</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-    
-                            <div className='list-result-card'>
-                                <div className='list-result-wrapper'>
-                                    <div className='list-result-titles'>
-                                        <img src={people2} alt='profile' className='list-result-profile-image' />
-                                        <div className='list-result-titles-text'>
-                                            <h1 className='list-result-name'>Mayk Brito</h1>
-                                            <h2 className='list-result-school-subject'>Educação Física </h2>
-                                        </div>
-                                    </div>
-    
-                                    <div className='list-result-descs'>
-                                        <div className='list-result-desc'>
-                                            <span>
-                                                Instrutor de Educação Física para iniciantes, minha missão de vida é levar
-                                                saúde e contribuir para o crescimento de quem se interessar.
-                                            </span>
-    
-                                            <span>
-                                                Comecei a minha jornada profissional em 2001, quando meu pai me deu
-                                                dois alteres de 32kg com a seguinte condição: "Aprenda a fazer dinheiro
-                                                com isso!"
-                                            </span>
-                                        </div>
-                                    </div>
-    
-                                    <div className='list-result-infos'>
-                                        <div className='list-result-infos-values'>
-                                            <span className='list-result-value-desc'>Preço/hora</span>
-                                            <h2 className='list-result-value'>R$ 40,00</h2>                                    
-                                        </div>
-                                        <div className='list-result-buttons'>
-                                            <button className='list-result-button'>Entrar em contato</button> 
+
+                                        <div className="list-result-infos">
+                                            <div className="list-result-infos-values">
+                                                <span className="list-result-value-desc">Preço/hora</span>
+                                                <h2 className="list-result-value">R$ {data.custo},00</h2>
+                                            </div>
+                                            <div className="list-result-buttons">
+                                                <button className="list-result-button">Entrar em contato</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            ))}                            
                         </div>) : (
                             <div className='list-result'>
                                 <div className='list-result-not-found'>
@@ -227,8 +218,7 @@ function List() {
                     ) : (
                         null
                     )
-                }
-                
+                }                
             </div>
         </div>
     )

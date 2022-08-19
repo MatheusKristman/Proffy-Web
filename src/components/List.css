@@ -95,6 +95,10 @@
     padding: 15px 20px;
 }
 
+.list-infos-select-week span {
+    color: #6a6180;
+}
+
 .list-infos-select-placeholder {
     font-size: 1rem;
     color: #6a6180;
@@ -189,6 +193,7 @@
     background-color: #fff;
     border-radius: 8px;
     border: 1.5px solid #E6E6F0;
+    width: 100%;
 }
 
 .list-result-wrapper {
