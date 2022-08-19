@@ -49,11 +49,11 @@ function List() {
             
             const reset = await JSON.parse(localStorage.getItem("teacher-data")) || [];
             
-            const filteredResultSubject = await reset.filter((subject) => subject.materia.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(searchData.subject.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")));            
+            const filteredResultSubject = await reset.filter((subject) => subject.materia.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(searchData.subject.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")));            
 
             const filteredResultDay = await filteredResultSubject.filter((data) => data.horario.find((horario) => horario.dia === searchData.day));
 
-            const filteredResultSchedule = await filteredResultDay.filter((data) => data.horario.find((horario) => Number(horario.inicio) <= Number(searchData.schedule) && Number(horario.fim) >= Number(searchData.schedule)));
+            const filteredResultSchedule = await filteredResultDay.filter((data) => data.horario.find((horario) => Number(horario.inicio) <= Number(searchData.schedule) && Number(horario.fim) >= Number(searchData.schedule.trim())));
             
             setSavedData(await filteredResultSchedule);
         }
