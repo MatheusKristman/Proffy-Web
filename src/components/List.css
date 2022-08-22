@@ -85,7 +85,8 @@
     width: 100%;
 }
 
-.list-infos-select-week {
+.list-infos-select-week,
+.list-infos-select-schedule {
     position: relative;
     background-color: #fafafc;
     border: 1.5px solid #e6e6f0;
@@ -99,12 +100,17 @@
     color: #6a6180;
 }
 
+.list-infos-select-schedule span {
+    color: #6a6180;
+}
+
 .list-infos-select-placeholder {
     font-size: 1rem;
     color: #6a6180;
 }
 
-.list-infos-select-week-button {
+.list-infos-select-week-button,
+.list-infos-select-schedule-button {
     position: absolute;
     border: none;
     background-color: transparent;
@@ -116,19 +122,28 @@
     right: 0px;
     top: 0;
     cursor: pointer;
+    pointer-events: none;
 }
 
-.list-infos-select-week-options {
+.list-infos-select-week-options,
+.list-infos-select-schedule-options {
     position: absolute;
     top: 95%;
     left: 0;
     width: 100%;
+    height: 250px;
+    overflow: auto;
     background-color: #fafafc;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 }
 
-.list-infos-select-week-option {
+.list-infos-select-week-options {
+    z-index: 99;
+}
+
+.list-infos-select-week-option,
+.list-infos-select-schedule-option {
     padding: 15px 20px;
     border-top: 1.5px solid #e6e6f0;
     font-family: 'Poppins', sans-serif;
@@ -137,12 +152,14 @@
     color: #6a6180;
 }
 
-.list-infos-select-week-option:last-child {
+.list-infos-select-week-option:last-child,
+.list-infos-select-schedule-option:last-child {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 }
 
-.list-infos-select-week-option:hover {
+.list-infos-select-week-option:hover,
+.list-infos-select-schedule-option:hover {
     background-color: #dddde7;
 }
 
@@ -164,20 +181,6 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-}
-
-.list-infos-input-schedule {
-    height: 56px;
-    padding: 15px 20px;
-    font-family: 'Archivo', sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
-    color: #6a6180;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-    background-color: #fafafc;
-    border: 1.5px solid #e6e6f0;
 }
 
 .list-result {

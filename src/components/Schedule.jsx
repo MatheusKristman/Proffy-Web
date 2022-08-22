@@ -70,7 +70,8 @@ function Schedule({ update, scheduleError }) {
     }
 
     function blurWeekSelect(e) {
-        if(!e.target.classList.contains('register-box-form-select-week-option')){
+        console.log(e.currentTarget)
+        if(!e.target.classList.contains('register-box-form-select-week-option') && !e.target.classList.contains("register-box-form-select-week-button")){
             setIsWeekClicked(false);
         }
     }
@@ -89,6 +90,7 @@ function Schedule({ update, scheduleError }) {
                     <div className={ isWeekClicked ? 'register-box-form-select-week-options' : 'register-box-form-select-week-options select-desactive' }>
                         <div 
                             onClick={(e) => {
+                                console.log(e.target);
                                 changeWeekOption('segunda');                                
                                 handleChange({dia: 'Segunda'})
                             }}
@@ -137,11 +139,12 @@ function Schedule({ update, scheduleError }) {
             </div>
             
             <div className='register-box-form-div-H-initial'>
-                <span className='register-box-form-placeholder'>Das</span>
+                <span className='register-box-form-placeholder'>Das (00h as 23h)</span>
                 <input
                     type='text'
                     name='inicio'
                     autoComplete='off'
+                    maxLength="2"
                     className={scheduleError.schedule ? 'register-box-form-input-H-initial register-error' : 'register-box-form-input-H-initial'}
                     onChange={(e) => handleChange({inicio: e.target.value})}
                 />
@@ -149,11 +152,12 @@ function Schedule({ update, scheduleError }) {
             </div>
 
             <div className='register-box-form-div-H-final'>
-                <span className='register-box-form-placeholder'>Até</span>
+                <span className='register-box-form-placeholder'>Até (00h as 23h)</span>
                 <input
                     type='text'
                     name='fim'
                     autoComplete='off'
+                    maxLength="2"
                     className={scheduleError.schedule ? 'register-box-form-input-H-final register-error' : 'register-box-form-input-H-final'}
                     onChange={(e) => handleChange({fim: e.target.value})}
                 />

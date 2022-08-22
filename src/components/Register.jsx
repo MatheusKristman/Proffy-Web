@@ -34,9 +34,15 @@ function Register() {
         custo: '',
         horario: []
     });    
-    const [scheduleComponent, setScheduleComponent] = useState([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [errors, setErrors] = useState({});
+    const [scheduleComponent, setScheduleComponent] = useState([
+        <Schedule 
+            update={update}
+            scheduleError={errors}
+            key="0"
+        />
+    ]);
     
     const navigate = useNavigate();    
 
@@ -73,10 +79,11 @@ function Register() {
     }    
 
     function blurSchoolSubjectSelect(e) {
-        if(!e.target.classList.contains('register-box-form-select-school-subject-option')){
+        console.log(e.target)
+        if(!e.target.classList.contains('register-box-form-select-school-subject-option') && !e.target.classList.contains("register-box-form-select-school-subject-button")){
             setIsSchoolSubjectClicked(false);
         }
-    }    
+    }
 
     function addSchedule(e) {
         e.preventDefault();
@@ -179,7 +186,7 @@ function Register() {
                                 <span className='register-box-form-placeholder-with-tip'>
                                     Link da sua foto
                                 </span>
-                                <small className='register-box-form-tip'>(comece com //http)</small>
+                                <small className='register-box-form-tip'>(comece com http)</small>
                                 <input
                                     type='text'
                                     name='foto'
@@ -372,13 +379,7 @@ function Register() {
                             </div>
                             <div className='register-box-line' />
 
-                            <span className='register-error-schedule' style={errors.schedule ? {display: 'block'} : {display: 'none'}}>{errors.schedule}</span>
-
-                            <Schedule 
-                                update={update}
-                                scheduleError={errors}
-                                key={scheduleComponent.length}
-                            />
+                            <span className='register-error-schedule' style={errors.schedule ? {display: 'block'} : {display: 'none'}}>{errors.schedule}</span>                            
 
                             {scheduleComponent}
 

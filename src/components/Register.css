@@ -235,6 +235,7 @@ textarea:focus+.register-box-input-focus-line {
     right: 0px;
     top: 0;
     cursor: pointer;
+    pointer-events: none;
 }
 
 .register-error {
@@ -393,7 +394,7 @@ textarea:focus+.register-box-input-focus-line {
 
 }   
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 550px) {
     .register-box-form-input-name,
     .register-box-form-input-photo,
     .register-box-form-input-tel,

@@ -7,8 +7,8 @@ export default function Validation(values) {
         errors.name = 'Favor inserir somente letras!'
     }
 
-    if (values.foto.substring(0, 6) !== '//http') {
-        errors.photo = 'Favor iniciar com "//http"!';
+    if (values.foto.substring(0, 4) !== 'http') {
+        errors.photo = 'Favor iniciar com "http"!';
     }
 
     if (values.tel.length < 13) {
